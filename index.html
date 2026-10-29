@@ -114,6 +114,41 @@ h2{font-size:clamp(2rem,4.2vw,3.4rem);color:var(--b)}
 .slide.on .card:nth-child(2){animation-delay:.15s}.slide.on .card:nth-child(3){animation-delay:.3s}.slide.on .card:nth-child(4){animation-delay:.45s}
 @keyframes cardIn{from{transform:translateY(120%) rotate(12deg);opacity:0}to{opacity:1}}
 
+/* ===== ACTIVITIES TOUR ===== */
+.act{background:linear-gradient(160deg,#fff7e8,#fdeee0)}
+.spot{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;flex:1;min-height:0;max-height:52vh}
+.stage{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 16px 40px #0003;background:linear-gradient(135deg,#0aa5c9,#06718f);min-height:240px}
+.sp-l{position:absolute;inset:0;border-radius:0;visibility:hidden}
+.sp-l.act{visibility:visible;z-index:2}
+.sp-l.fx0.act{animation:fxZoom .9s cubic-bezier(.2,1.2,.4,1)}
+.sp-l.fx1.act{animation:fxSlide .8s cubic-bezier(.2,1.2,.4,1)}
+.sp-l.fx2.act{animation:fxRot .9s cubic-bezier(.2,1.3,.4,1)}
+.sp-l.fx3.act{animation:fxIris .9s cubic-bezier(.6,0,.3,1)}
+@keyframes fxZoom{from{transform:scale(1.7);opacity:0}to{transform:none;opacity:1}}
+@keyframes fxSlide{from{transform:translateX(100%)}to{transform:none}}
+@keyframes fxRot{from{transform:rotate(-14deg) scale(.4);opacity:0}to{transform:none;opacity:1}}
+@keyframes fxIris{from{clip-path:circle(0% at 50% 50%)}to{clip-path:circle(80% at 50% 50%)}}
+.sp-num{position:absolute;top:14px;left:14px;z-index:5;background:var(--y);min-width:58px;height:58px;padding:0 10px;border-radius:30px;font-family:'Baloo 2';font-size:1.9rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 0 #0003}
+.sp-num.pop{animation:spin .8s cubic-bezier(.2,1.4,.4,1)}
+.info{background:#fff;border-radius:24px;padding:22px 24px;box-shadow:0 10px 30px #0001;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.info .sp-ic{font-size:3.4rem;line-height:1;display:inline-block;animation:floaty 2.4s ease-in-out infinite;align-self:flex-start}
+.info h3{font-size:clamp(1.6rem,2.8vw,2.4rem);color:var(--b)}
+.info p{font-size:clamp(1rem,1.5vw,1.25rem)}
+.info.pop>*{animation:infoIn .65s cubic-bezier(.2,1.4,.4,1) both}
+.info.pop>*:nth-child(2){animation-delay:.12s}.info.pop>*:nth-child(3){animation-delay:.24s}.info.pop>*:nth-child(4){animation-delay:.36s}
+@keyframes infoIn{from{transform:translateX(50px);opacity:0}to{transform:none;opacity:1}}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:#fff3c4;border:2px solid var(--y);border-radius:30px;padding:6px 14px;font-weight:800;font-size:1rem;opacity:0;transform:scale(.3)}
+.chip.show{animation:chipIn .55s cubic-bezier(.2,1.7,.4,1) forwards}
+@keyframes chipIn{to{opacity:1;transform:none}}
+.chip.big{font-size:1.15rem;background:#ffe9e3;border-color:var(--coral)}
+.thumbs{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.th{border:3px solid transparent;background:#fff;border-radius:14px;padding:6px 4px;font:inherit;font-weight:800;font-size:.82rem;cursor:pointer;box-shadow:0 4px 12px #0001;transition:.35s cubic-bezier(.2,1.4,.4,1)}
+.th .e{font-size:1.5rem;display:block}
+.th.act{border-color:var(--r);transform:translateY(-8px) scale(1.08);background:#fff1f1;box-shadow:0 10px 20px #ce112633}
+.th.done{opacity:.55}
+.slide.on .th{animation:cardIn .7s cubic-bezier(.2,1.5,.4,1) both;animation-delay:calc(var(--k)*70ms + .4s)}
+@media(max-width:860px){.spot{grid-template-columns:1fr;max-height:none}.thumbs{grid-template-columns:repeat(4,1fr)}}
 /* ===== DID YOU KNOW ===== */
 .dyk{background:radial-gradient(circle at 30% 20%,#13485f,#041c27);color:#fff}
 .dyk h2{color:var(--y)}
@@ -357,16 +392,15 @@ body.paused .ctrl,body.paused .ctrl *{animation-play-state:running!important}
 </section>
 
 <!-- 4 ACTIVITIES -->
-<section class="slide">
+<section class="slide act">
   <div class="wrap">
     <span class="tag">🎯 2. Important activities</span>
-    <h2>What do people do in Cartagena?</h2>
-    <div class="gal">
-      <div class="card"><div class="img" data-img="Calle_del_Guerrero,_Getsemaní,_Cartagena.jpg|Ciudad_Amurallada_Cartagena.JPG" data-fb="📸"></div><div class="badge">📸</div><div class="cap"><h3>Tourism</h3><div class="more">Visitors from all over the world come to see the <b>Walled City</b> and its <b>colorful streets</b>.</div></div></div>
-      <div class="card"><div class="img" data-img="Bahía_de_Cartagena_Colombia.jpg|Cartagena_Colombia_2019.jpg" data-fb="🚢"></div><div class="badge">🚢</div><div class="cap"><h3>The port</h3><div class="more">Big <b>ships</b> bring and take <b>products</b> from all over the world.</div></div></div>
-      <div class="card"><div class="img" data-img="Islas_del_Rosario_-_Cartagena_(8).jpg|Playa_La_Boquilla,_Cartagena.jpg" data-fb="🏖️"></div><div class="badge">🎣</div><div class="cap"><h3>Fishing &amp; beaches</h3><div class="more">Fishermen <b>catch fish</b>, and families enjoy the beaches of the <b>Rosario Islands</b>.</div></div></div>
-      <div class="card"><div class="img" data-img="Palenqueras_Cartagena.jpg|Arepa_de_huevo.jpg" data-fb="🍉"></div><div class="badge">🍉</div><div class="cap"><h3>Culture &amp; food</h3><div class="more"><b>Palenqueras</b> sell tropical fruits, and we can eat <b>arepa de huevo</b> and <b>coconut rice</b>!</div></div></div>
+    <h2>What can we do in Cartagena?</h2>
+    <div class="spot">
+      <div class="stage" id="stage"><div class="sp-num" id="spNum">🎒</div></div>
+      <div class="info" id="spInfo"></div>
     </div>
+    <div class="thumbs" id="thumbs"></div>
   </div>
 </section>
 
@@ -379,7 +413,7 @@ body.paused .ctrl,body.paused .ctrl *{animation-play-state:running!important}
     <div class="dgrid">
       <div class="img" data-img="Murallas_de_Cartagena_de_Indias.jpg|Muralla_de_Cartagena.JPG" data-fb="🧱"></div>
       <div class="img" data-img="Castillo_San_Felipe_de_Barajas,_Cartagena_03.jpg|Colombia,_Cartagena,_Castillo_de_San_Felipe_de_Barajas.jpg" data-fb="🏰" id="castle"></div>
-      <div class="img" data-img="023_Torre_del_Reloj_Cartagena_Colombia.JPG|Torre_del_Reloj,_Cartagena_01.jpg" data-fb="🕰️"></div>
+      <div class="img" data-img="Castillo_San_Felipe_de_Barajas,_Cartagena_05.jpg|Castillo_de_San_Felipe_de_Barajas7.JPG" data-fb="🏰"></div>
       <div class="img" data-img="Las_Murallas,_the_walls_of_Cartagena,_Colombia_(24216318379).jpg" data-fb="💣"></div>
       <div class="img" data-img="Castillo_San_Felipe_de_Barajas,_Cartagena_19.jpg|Cartagena_skyline_(26141851828).jpg" data-fb="🌅"></div>
     </div>
@@ -475,8 +509,8 @@ body.paused .ctrl,body.paused .ctrl *{animation-play-state:running!important}
    Teclas: ESPACIO = iniciar · M = música on/off · S = sonidos on/off
            F = pantalla completa · R = reiniciar · ← → = manual
    ===================================================================== */
-const DUR =[11,18,28,32,20,36,27,10];
-const BASE=[11,18,28,32,20,36,27,10];
+const DUR =[11,18,28,57,20,36,27,10];
+const BASE=[11,18,28,57,20,36,27,10];
 const TRANS=['curtain','stripes','spin','wave','iris','plane','blinds','drop'];
 
 /* ---------- SOUND (Web Audio, no files) ---------- */
@@ -596,7 +630,7 @@ const CUES=[
  [[0.5,()=>cue(1,[0])],[3,()=>cue(1,[1,2])],[7.5,()=>cue(1,[3,4])],[11.5,()=>cue(1,[5,6])]],
  [[0,()=>zoomTo('all',true)],[2,()=>cue(2,[0])],[4.5,()=>{cue(2,[1]);mapEl.classList.add('cb');sfx('waves')}],[9,()=>{cue(2,[2]);mapEl.classList.add('bz');zoomTo('ctg');document.getElementById('lbBol').setAttribute('opacity',1)}],
   [13.5,()=>{cue(2,[3]);zoomTo('all');setTimeout(drawTrip,1500)}],[17.5,()=>{cue(2,[4]);sfx('ding')}],[21,()=>zoomTo('ctg')]],
- [[3,()=>openCard(0)],[9.5,()=>openCard(1)],[15.5,()=>openCard(2)],[23.5,()=>openCard(3)]],
+ [[3,()=>spot(0)],[10,()=>spot(1)],[16,()=>spot(2)],[23,()=>spot(3)],[31,()=>spot(4)],[37.5,()=>spot(5)],[44.5,()=>spot(6)],[47,()=>chip(0)],[49,()=>chip(1)],[51,()=>chip(2)],[53,()=>chip(3)],[55,()=>{sfx('tada');burstEl(document.getElementById('stage'),90)}]],
  [[1.5,()=>cue(4,[0])],[7,()=>{cue(4,[1]);pirate()}],[11.5,()=>{cue(4,[2]);const c=document.getElementById('castle');c.classList.remove('hl');void c.offsetWidth;c.classList.add('hl');sfx('boom')}],[15,()=>{cue(4,[3]);sfx('fanfare');burst(W/2,H/2,90)}]],
  [[2.5,()=>mode('plane')],[9.5,()=>mode('bus')],[13,()=>mode('car')],[17,()=>mode('ship')],[22,()=>mode('river')],[29,()=>mode('all')]],
  [[2,()=>showQ(0)],[6.5,()=>answer(0)],[8,()=>showQ(1)],[12,()=>answer(1)],[13.5,()=>showQ(2)],[18,()=>answer(2)],[19.5,()=>showQ(3)],[23,()=>answer(3)]],
@@ -605,7 +639,7 @@ const AMB=['bubbles','dots','dots','dots','gold','dots','dots','bubbles'];
 function cue(s,idx){const c=S[s].querySelectorAll('.cue');idx.forEach(k=>{if(!c[k])return;c[k].classList.add('show');sfx('pop');countIn(c[k]);
   if(s===1&&c[k].classList.contains('me'))setTimeout(()=>{burstEl(c[k],60);sfx('ding')},400)})}
 function clearT(){timers.forEach(clearTimeout);timers=[]}
-function resetSlide(n){S[n].querySelectorAll('.cue').forEach(c=>c.classList.remove('show'));cards.forEach(c=>c.classList.remove('open'));
+function resetSlide(n){S[n].querySelectorAll('.cue').forEach(c=>c.classList.remove('show'));cards.forEach(c=>c.classList.remove('open'));if(n===3)spotReset();
   if(n===2){mapEl.classList.remove('cb','bz');document.getElementById('lbBol').setAttribute('opacity',0);tripEl.setAttribute('opacity',0)}
   if(n===5){document.querySelectorAll('.mode').forEach(x=>x.classList.remove('on'));say.innerHTML='🧳 Let\'s travel!';veh.textContent='✈️';placeOn('p-air',0);ph.dataset.tok=Math.random();ph.innerHTML='';ph.classList.add('fail');ph.textContent='🧳';stamp.classList.remove('on');hlPath(null)}
   if(n===6)buildQuiz()}
@@ -671,6 +705,37 @@ draw(cur);
 const cards=[...document.querySelectorAll('.card')];
 function openCard(k){cards.forEach((c,j)=>c.classList.toggle('open',j===k));sfx(['swoosh','horn','splash','pop'][k]||'pop');setTimeout(()=>burstEl(cards[k],25),300)}
 cards.forEach((c,k)=>c.onclick=()=>openCard(k));
+const ACTS=[
+ {ic:'🏰',short:'Walled City',title:'The Walled City',img:'Ciudad_Amurallada_Cartagena_de_Indias.jpg|Ciudad_Amurallada_Cartagena.JPG',s:'whoosh',
+  p:'We walk in the <b>old city</b>: old houses, <b>colorful balconies</b> and <b>flowers</b>.',chips:['🏠 Old houses','🌺 Balconies','🐴 Horse carriages']},
+ {ic:'🕰️',short:'Clock Tower',title:'The Clock Tower',img:'023_Torre_del_Reloj_Cartagena_Colombia.JPG|Torre_del_Reloj,_Cartagena_01.jpg',s:'ding',
+  p:'The <b>Torre del Reloj</b> is the <b>main door</b> to the Walled City.',chips:['🕰️ Big clock','🚪 Main gate','📸 Great photos']},
+ {ic:'🎨',short:'Getsemaní',title:'Getsemaní',img:'Calle_del_Guerrero,_Getsemaní,_Cartagena.jpg|Callejón_Angosto,_Getsemaní,_Cartagena.jpg',s:'pop',
+  p:'A neighborhood with <b>colorful streets</b> and <b>art on the walls</b>.',chips:['🌈 Colors','🎨 Street art','🎶 Music']},
+ {ic:'🚢',short:'The port',title:'The Port',img:'Bahía_de_Cartagena_Colombia.jpg|Cartagena_Colombia_2019.jpg',s:'horn',
+  p:'Cartagena is <b>by the sea</b>, so it has a <b>big port</b>. Ships bring products from <b>all over the world</b>.',chips:['🚢 Big ships','📦 Products','🌎 The world']},
+ {ic:'🏝️',short:'Beaches',title:'Fishing & Beaches',img:'Islas_del_Rosario_-_Cartagena_(8).jpg|Playa_La_Boquilla,_Cartagena.jpg',s:'splash',
+  p:'People <b>fish</b>, and families enjoy the beaches of the <b>Rosario Islands</b>.',chips:['🎣 Fishing','🏝️ Islands','🐠 Colorful fish']},
+ {ic:'🍉',short:'Palenqueras',title:'The Palenqueras',img:'Palenqueras_Cartagena.jpg|Palenqueras_al_natural.jpg',s:'parrot',
+  p:'Women with <b>colorful dresses</b> who sell <b>tropical fruits</b>.',chips:['🥭 Mango','🍉 Watermelon','🍍 Pineapple']},
+ {ic:'😋',short:'Typical food',title:'Typical Food',img:'Arepa_de_huevo.jpg|Arepas_de_huevo.jpg',s:'tada',cue:1,
+  p:'Delicious <b>Caribbean food</b>! Yummy!',chips:['🫓🥚 Arepa de huevo','🥥🍚 Coconut rice','🐟🍌 Fried fish & patacón','🥥🍬 Cocadas']}];
+const stage=document.getElementById('stage'),spNum=document.getElementById('spNum'),spInfo=document.getElementById('spInfo'),thumbs=document.getElementById('thumbs');
+const layers=ACTS.map((a,k)=>{const l=document.createElement('div');l.className='img sp-l fx'+(k%4);l.dataset.fb=a.ic;stage.insertBefore(l,spNum);setImg(l,a.img);
+  const b=document.createElement('button');b.className='th';b.style.setProperty('--k',k);b.innerHTML='<span class="e">'+a.ic+'</span>'+a.short;b.onclick=()=>spot(k);thumbs.appendChild(b);return l});
+let spTimers=[];
+function spot(k){const a=ACTS[k];spTimers.forEach(clearTimeout);spTimers=[];
+  layers.forEach((l,j)=>{l.classList.remove('act');if(j===k){void l.offsetWidth;l.classList.add('act')}});
+  spNum.textContent=k+1;spNum.classList.remove('pop');void spNum.offsetWidth;spNum.classList.add('pop');
+  [...thumbs.children].forEach((b,j)=>{b.classList.toggle('act',j===k);b.classList.toggle('done',j<k)});
+  spInfo.innerHTML='<div class="sp-ic">'+a.ic+'</div><h3>'+a.title+'</h3><p>'+a.p+'</p><div class="chips">'+a.chips.map(c=>'<span class="chip'+(a.cue?' big':'')+'">'+c+'</span>').join('')+'</div>';
+  spInfo.classList.remove('pop');void spInfo.offsetWidth;spInfo.classList.add('pop');sfx(a.s);burstEl(thumbs.children[k],20);
+  if(!a.cue)a.chips.forEach((c,j)=>spTimers.push(setTimeout(()=>chip(j),800+j*550)))}
+function chip(j){const c=spInfo.querySelectorAll('.chip')[j];if(c&&!c.classList.contains('show')){c.classList.add('show');sfx('pop');if(c.classList.contains('big'))burstEl(c,18)}}
+function spotReset(){spTimers.forEach(clearTimeout);layers.forEach(l=>l.classList.remove('act'));spNum.textContent='🎒';
+  [...thumbs.children].forEach(b=>b.classList.remove('act','done'));
+  spInfo.innerHTML='<div class="sp-ic">🎒</div><h3>Let\'s explore!</h3><p>Seven places and things we can enjoy in Cartagena.</p>';spInfo.classList.remove('pop')}
+spotReset();
 
 /* ---------- DID YOU KNOW ---------- */
 function pirate(){const p=document.getElementById('pirate');p.classList.remove('go');void p.offsetWidth;p.classList.add('go');sfx('waves');setTimeout(()=>sfx('boom'),1800);setTimeout(()=>sfx('boom'),2600)}
